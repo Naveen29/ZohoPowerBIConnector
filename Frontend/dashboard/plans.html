@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plans | Zoho Power BI Connector</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../styles.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <div class="container py-3">
+      <a class="navbar-brand" href="../index.html">Zoho Power BI Connector</a>
+      <div class="ms-auto">
+        <a class="btn btn-outline-primary" href="../dashboard.html">Back to Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <h1 class="mb-4">Subscription Plans</h1>
+    <div id="plansContainer" class="row g-4"></div>
+    <div id="plansAlert" class="alert d-none mt-4" role="alert"></div>
+  </main>
+
+  <script>
+    const apiPlans = '/api/plans';
+    const apiSubs = '/api/subscriptions';
+
+    const showAlert = (msg, type='success') => {
+      const el = document.getElementById('plansAlert');
+      el.textContent = msg;
+      el.classList.remove('d-none','alert-success','alert-danger');
+      el.classList.add('alert', type==='success'?'alert-success':'alert-danger');
+    };
+
+    const fetchPlans = async () => {
+      try {
+        const res = await fetch(apiPlans);
+        const list = await res.json();
+        const container = document.getElementById('plansContainer');
+        container.innerHTML = '';
+        list.forEach(p => {
+          const col = document.createElement('div');
+          col.className = 'col-md-6';
+          col.innerHTML = `
+            <div class="card p-4">
+              <h5>${p.Name}</h5>
+              <p class="text-muted">${p.Description}</p>
+              <p><strong>$${p.Price} / month</strong></p>
+              <button class="btn btn-primary" data-plan-id="${p.Id}">Purchase</button>
+            </div>
+          `;
+          container.appendChild(col);
+        });
+
+        document.querySelectorAll('[data-plan-id]').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const planId = parseInt(btn.getAttribute('data-plan-id'));
+            const token = localStorage.getItem('authToken');
+            if (!token) { window.location.href='../login.html'; return; }
+            try {
+              const res = await fetch(`${apiSubs}/purchase`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                body: JSON.stringify({ planId })
+              });
+              const body = await res.json();
+              if (!res.ok) { showAlert(body.error || 'Purchase failed', 'danger'); return; }
+              showAlert('Subscription purchased. Expiry: ' + body.expiryDate, 'success');
+            } catch (err) { showAlert('Unable to contact server', 'danger'); }
+          });
+        });
+
+      } catch (err) {
+        showAlert('Unable to load plans', 'danger');
+      }
+    };
+
+    fetchPlans();
+  </script>
+</body>
+</html>

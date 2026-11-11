@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoho Helper | Zoho Power BI Connector</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <div class="container py-3">
+      <a class="navbar-brand" href="index.html">Zoho Power BI Connector</a>
+      <div class="ms-auto">
+        <a class="btn btn-primary" href="dashboard.html#zoho">Zoho Configuration</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card p-4 shadow-sm">
+          <h1 class="h3 mb-4">Zoho Helper</h1>
+          <p class="text-muted">Follow this step-by-step guide to create your Zoho Client ID, Client Secret, Refresh Token, and Organization ID.</p>
+
+          <section class="mb-4">
+            <h2 class="h5">What You Need</h2>
+            <p>Before you begin, make sure you have access to your Zoho account and can sign in to the Zoho API Console.</p>
+            <ul>
+              <li>Client ID</li>
+              <li>Client Secret</li>
+              <li>Refresh Token</li>
+              <li>Organization ID</li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h5">Step 1: Create a Self Client</h2>
+            <p>Open the Zoho API Console and create a new self client. A self client is the recommended method for connector authentication because it does not require a redirect URI.</p>
+            <ol>
+              <li>Go to <a href="https://api-console.zoho.com/" target="_blank" rel="noopener">https://api-console.zoho.com/</a>.</li>
+              <li>Sign in with your Zoho account.</li>
+              <li>Click <strong>Add Client</strong>.</li>
+              <li>Select <strong>Self Client</strong>.</li>
+              <li>Click <strong>Create</strong> and open the newly created Self Client.</li>
+            </ol>
+            <p>Copy and save:</p>
+            <ul>
+              <li>Client ID</li>
+              <li>Client Secret</li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h5">Step 2: Generate a Grant Token</h2>
+            <p>Inside your Zoho Self Client, generate a one-time grant token for the <strong>ZohoBooks.fullaccess.all</strong> scope.</p>
+            <p>Use a short validity period such as 10 minutes, then click <strong>Create</strong>.</p>
+            <div class="alert alert-warning">
+              <strong>Important:</strong> The grant token is one-time use only and expires after the selected validity period.
+            </div>
+            <p>Example token format:</p>
+            <pre class="bg-dark text-white p-3 rounded">1000.xxxxxxxxxxxxxxxxxxxxxxxxx</pre>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h5">Step 3: Generate the Refresh Token</h2>
+            <p>Use a POST request to generate the refresh token using your client credentials and the grant token.</p>
+            <p>Request URL:</p>
+            <pre class="bg-dark text-white p-3 rounded">https://accounts.zoho.com/oauth/v2/token</pre>
+            <p>Body type: <strong>x-www-form-urlencoded</strong></p>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>grant_type</td>
+                    <td>authorization_code</td>
+                  </tr>
+                  <tr>
+                    <td>client_id</td>
+                    <td>Your Client ID</td>
+                  </tr>
+                  <tr>
+                    <td>client_secret</td>
+                    <td>Your Client Secret</td>
+                  </tr>
+                  <tr>
+                    <td>code</td>
+                    <td>Your Grant Token</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Example response:</p>
+            <pre class="bg-dark text-white p-3 rounded">{
+  "access_token": "1000.xxxxxxxxx",
+  "refresh_token": "1000.xxxxxxxxx",
+  "expires_in": 3600
+}</pre>
+            <p>Save the <strong>refresh_token</strong>. Your connector uses it to request new access tokens automatically.</p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h5">Step 4: Find Your Organization ID</h2>
+            <p>Use the access token from the previous step to fetch your organization information.</p>
+            <p>Request URL:</p>
+            <pre class="bg-dark text-white p-3 rounded">https://www.zohoapis.com/books/v3/organizations</pre>
+            <p>Header:</p>
+            <pre class="bg-dark text-white p-3 rounded">Authorization: Zoho-oauthtoken YOUR_ACCESS_TOKEN</pre>
+            <p>Sample response:</p>
+            <pre class="bg-dark text-white p-3 rounded">{
+  "organizations": [
+    {
+      "organization_id": "1234567890",
+      "name": "ABC Company"
+    }
+  ]
+}</pre>
+            <p>Copy the <strong>organization_id</strong> value.</p>
+          </section>
+
+          <section class="mb-4">
+            <h2 class="h5">Connector Credentials</h2>
+            <p>Enter these values into the Zoho configuration page in your connector:</p>
+            <ul>
+              <li>Client ID</li>
+              <li>Client Secret</li>
+              <li>Refresh Token</li>
+              <li>Organization ID</li>
+            </ul>
+          </section>
+
+          <section class="mb-4">
+            <div class="alert alert-success">
+              <strong>Setup Complete!</strong>
+              <p class="mb-0">Your Zoho Books account is now ready to connect with the Zoho Power BI Connector.</p>
+            </div>
+          </section>
+
+          <p class="text-muted small">Last updated: June 2026</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

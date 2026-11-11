@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoho Power BI Connector | Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+        <div class="container py-3">
+            <a class="navbar-brand" href="index.html">Zoho Power BI Connector</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#videos">Demo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="btn btn-primary ms-3" href="register.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container py-5">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6">
+                    <span class="badge bg-primary mb-4">SaaS Connector for Zoho + Power BI</span>
+                    <h1 class="display-4 fw-bold">Connect Zoho data to Power BI in minutes.</h1>
+                    <p class="lead text-muted">Securely manage Zoho credentials, validate API connections, and control subscriptions from a polished portal experience.</p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="#pricing" class="btn btn-primary btn-lg">Start Free Trial</a>
+                        <a href="#videos" class="btn btn-outline-primary btn-lg">Watch Demo</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow-lg border-0 overflow-hidden" style="border-radius: 32px;">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Dashboard preview" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="stats-banner" class="py-4">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="stat-card stat-gradient-1 text-white text-center p-3" style="min-width:260px;">
+                    <div class="mb-1">Total Registered</div>
+                    <div id="totalRegisteredCount" class="stat-value">0</div>
+                    <div class="stat-sub">Trusted customers and trial users</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-5">
+                    <h2 class="section-title">Modern integration for Zoho and Power BI</h2>
+                    <p class="text-muted">A unified portal built for teams seeking fast setup, secure credential storage, and reliable data refresh scheduling.</p>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-3">• Centralized Zoho API configuration with encrypted storage</li>
+                        <li class="mb-3">• Automated validation and health checks</li>
+                        <li class="mb-3">• Subscription planning with full plan control</li>
+                    </ul>
+                </div>
+                <div class="col-lg-7">
+                    <div class="card p-4 shadow-sm border-0">
+                        <div class="row text-center g-4">
+                            <div class="col-6 col-md-3">
+                                <div class="text-primary fs-4">🔒</div>
+                                <p class="mb-0 text-muted">Secure Data</p>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="text-primary fs-4">⚡</div>
+                                <p class="mb-0 text-muted">Fast Setup</p>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="text-primary fs-4">📈</div>
+                                <p class="mb-0 text-muted">Real-Time Insights</p>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="text-primary fs-4">🛠️</div>
+                                <p class="mb-0 text-muted">Easy Management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-5 bg-surface-soft">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Features</h2>
+                <p class="text-muted">A modern stack to manage connection, validation, subscriptions and documentation.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 h-100 shadow-sm">
+                        <h5>Power BI Integration</h5>
+                        <p class="text-muted">Push Zoho datasets into Power BI and keep charts up to date without manual exports.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 h-100 shadow-sm">
+                        <h5>Zoho Analytics Support</h5>
+                        <p class="text-muted">Native support for Zoho API workflows and secure credential handling.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 h-100 shadow-sm">
+                        <h5>Scheduled Refresh</h5>
+                        <p class="text-muted">Set refresh frequency and keep your Power BI reports refreshed automatically.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 h-100 shadow-sm">
+                        <h5>Secure Authentication</h5>
+                        <p class="text-muted">JWT authentication for portal users and encrypted Zoho secrets in storage.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 h-100 shadow-sm">
+                        <h5>Easy Setup</h5>
+                        <p class="text-muted">A guided onboarding flow for Zoho credentials and plan selection.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 h-100 shadow-sm">
+                        <h5>Customer Portal</h5>
+                        <p class="text-muted">Manage account status, plan expiry, and support from one elegant dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Demo Videos</h2>
+                <p class="text-muted">Quick walkthroughs to help you install, configure, and use the connector.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Installation Video" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-3">Installation Video</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Configuration Video" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-3">Configuration Video</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Feature Walkthrough" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-3">Feature Walkthrough</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Pricing</h2>
+                <p class="text-muted">Choose the plan that fits your business needs.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-5">
+                    <div class="card pricing-card p-4 h-100 shadow-sm">
+                        <div class="card-body">
+                            <span class="badge bg-secondary mb-3">Free Plan</span>
+                            <h3 class="fw-bold">$0 / month</h3>
+                            <p class="text-muted">Limited usage with community support.</p>
+                            <ul class="list-unstyled mb-4 text-muted">
+                                <li>• Limited API requests</li>
+                                <li>• Community support</li>
+                                <li>• Basic dashboards</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-outline-primary">Contact Sales</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card pricing-card p-4 h-100 shadow-sm border-primary">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-3">Pro Plan</span>
+                            <h3 class="fw-bold">$49 / month</h3>
+                            <p class="text-muted">Full access, premium support, scheduled refresh.</p>
+                            <ul class="list-unstyled mb-4 text-muted">
+                                <li>• Unlimited usage</li>
+                                <li>• Premium support</li>
+                                <li>• Automated refresh</li>
+                            </ul>
+                            <a href="dashboard.html" class="btn btn-primary">Start Free Trial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="text-muted">Answers to the most common questions about the connector.</p>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="faq-card p-4 shadow-sm">
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>What does the connector support?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">It supports Zoho Analytics data retrieval, Power BI dataset refresh, and subscription-based access.</p>
+                        </div>
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>Can I use it with Power BI Pro?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Yes. The portal is compatible with Power BI Desktop and Power BI Service accounts.</p>
+                        </div>
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>How secure are credentials?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Zoho client secrets and refresh tokens are encrypted in the database and never exposed in plaintext.</p>
+                        </div>
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>Is there a free trial?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Yes, the Pro plan includes a trial period so you can evaluate the connector before committing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="faq-card p-4 shadow-sm">
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>Can I update Zoho settings later?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Yes. The portal allows credential updates and revalidation at any time.</p>
+                        </div>
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>What happens if my plan expires?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Expired plans will block plugin validation until the subscription is renewed.</p>
+                        </div>
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>How do I contact support?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Use the contact form below or access the support page once logged in.</p>
+                        </div>
+                        <div class="faq-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>Does it support multiple users?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Yes, the portal is designed for customer management and can support multiple licensed users per account.</p>
+                        </div>
+                        <div class="faq-item">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h6>Is documentation available?</h6>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <p class="faq-answer d-none text-muted mt-2">Yes, documentation pages are included for privacy policy, terms, support, and usage guides.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-card p-4 shadow-sm">
+                        <h2 class="section-title mb-3">Contact Us</h2>
+                        <p class="text-muted">Send us a message and we will respond with the next steps.</p>
+                        <div id="contactAlert" class="alert d-none" role="alert"></div>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="contactName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="contactName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="contactEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactMessage" class="form-label">Message</label>
+                                <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start">
+            <div>
+                <strong>Zoho Power BI Connector</strong><br>
+                Secure portal for Zoho and Power BI customers.
+            </div>
+            <div class="mt-3 mt-md-0">
+                <a href="#about" class="me-3">About</a>
+                <a href="#contact" class="me-3">Contact</a>
+                <a href="privacy-policy.html" class="me-3">Privacy Policy</a>
+                <a href="terms.html" class="me-3">Terms</a>
+                <a href="support.html" class="me-3">Support</a>
+                <a href="docs.html">Docs</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>

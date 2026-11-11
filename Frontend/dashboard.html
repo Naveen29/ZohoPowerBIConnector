@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Zoho Power BI Connector</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+        <div class="container py-3">
+            <a class="navbar-brand" href="index.html">Zoho Power BI Connector</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardNav" aria-controls="dashboardNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="dashboardNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#summary">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#zoho">Zoho Config</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#plans">Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-primary ms-3" href="index.html">Back to Site</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5" id="dashboardSummary">
+        <section id="summary" class="dashboard-hero p-4 p-md-5 mb-5 shadow-sm">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-7">
+                    <h1 class="display-5 fw-bold">Welcome back, <strong id="userName"></strong></h1>
+                    <p class="lead text-white mb-4">Your customer portal overview is ready. Manage Zoho credentials, subscriptions, and support in one place.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="#zoho" class="btn btn-white">Update Zoho Connection</a>
+                        <a href="#plans" class="btn btn-outline-light">View Plans</a>
+                        <a href="#support" class="btn btn-outline-light">Contact Support</a>
+                        <a id="adminPortalLink" href="admin.html" class="btn btn-warning d-none">View Users</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card p-4 text-white" style="background: rgba(255,255,255,0.12); border:none; border-radius: 24px;">
+                        <div class="mb-4">
+                            <small class="text-uppercase">Current Plan</small>
+                            <h3 id="currentPlan" class="fw-bold">Pro Plan</h3>
+                        </div>
+                        <div class="row text-white g-3">
+                            <div class="col-6">
+                                <div class="py-3 px-3 bg-white bg-opacity-10 rounded-4">
+                                    <small class="text-uppercase text-muted">Expiry</small>
+                                    <div id="expiryDate" class="fs-5 fw-semibold">2026-12-31</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="py-3 px-3 bg-white bg-opacity-10 rounded-4">
+                                    <small class="text-uppercase text-muted">Remaining</small>
+                                    <div id="remainingDays" class="fs-5 fw-semibold">175 days</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="py-3 px-3 bg-white bg-opacity-10 rounded-4">
+                                    <small class="text-uppercase text-muted">Status</small>
+                                    <div id="subscriptionStatus" class="fs-5 fw-semibold">Active</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="py-3 px-3 bg-white bg-opacity-10 rounded-4">
+                                    <small class="text-uppercase text-muted">Last Login</small>
+                                    <div id="lastLogin" class="fs-5 fw-semibold">Jun 9, 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="dashboard-card p-4 h-100 shadow-sm">
+                    <h6 class="text-uppercase text-muted">Plan</h6>
+                    <p id="cardPlan" class="display-6 fw-bold">Pro</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dashboard-card p-4 h-100 shadow-sm">
+                    <h6 class="text-uppercase text-muted">Subscription</h6>
+                    <p id="cardStatus" class="display-6 fw-bold">Active</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dashboard-card p-4 h-100 shadow-sm">
+                    <h6 class="text-uppercase text-muted">Expiry</h6>
+                    <p id="cardExpiry" class="display-6 fw-bold">Dec 31, 2026</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dashboard-card p-4 h-100 shadow-sm">
+                    <h6 class="text-uppercase text-muted">Last Login</h6>
+                    <p id="cardLastLogin" class="display-6 fw-bold">Jun 9, 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="zoho" class="mb-5">
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="dashboard-card p-4 shadow-sm">
+                        <h4>Zoho Configuration</h4>
+                        <p class="text-muted">Your current Zoho connection status and configuration summary.</p>
+                        <p class="mb-3"><a href="zohohelper.html" class="link-primary">Need help creating your Zoho Client ID, Client Secret, and Refresh Token?</a></p>
+                        <dl class="row">
+                            <dt class="col-sm-5">Base URL</dt>
+                            <dd id="zohoBaseUrl" class="col-sm-7">https://www.zohoapis.com/books/v3 <span class="text-muted">(readonly default)</span></dd>
+                            <dt class="col-sm-5">Organization ID</dt>
+                            <dd id="zohoOrganizationId" class="col-sm-7">Not configured</dd>
+                            <dt class="col-sm-5">Client ID</dt>
+                            <dd id="zohoClientId" class="col-sm-7">•••••••••••••••••••••</dd>
+                            <dt class="col-sm-5">Status</dt>
+                            <dd id="zohoStatus" class="col-sm-7 text-success">Validated</dd>
+                            <dt class="col-sm-5">Last Validated</dt>
+                            <dd id="zohoLastValidated" class="col-sm-7">2026-06-09 13:15</dd>
+                        </dl>
+                        <form id="zohoConfigForm" class="mt-4">
+                            <div id="zohoConfigAlert" class="alert d-none" role="alert"></div>
+                            <div class="mb-3">
+                                <label for="zohoBaseUrlInput" class="form-label">Base URL</label>
+                                <input type="text" id="zohoBaseUrlInput" class="form-control" readonly value="https://www.zohoapis.com/books/v3">
+                            </div>
+                            <div class="mb-3">
+                                <label for="zohoOrganizationIdInput" class="form-label">Organization ID</label>
+                                <input type="text" id="zohoOrganizationIdInput" class="form-control" placeholder="Zoho Organization ID" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="zohoClientIdInput" class="form-label">Client ID</label>
+                                <input type="text" id="zohoClientIdInput" class="form-control" placeholder="Zoho Client ID" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="zohoClientSecretInput" class="form-label">Client Secret</label>
+                                <input type="password" id="zohoClientSecretInput" class="form-control" placeholder="Zoho Client Secret" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="zohoRefreshTokenInput" class="form-label">Refresh Token</label>
+                                <textarea id="zohoRefreshTokenInput" class="form-control" rows="3" placeholder="Zoho Refresh Token" required></textarea>
+                            </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button type="submit" class="btn btn-primary">Save Configuration</button>
+                                <button type="button" id="testZohoConnectionButton" class="btn btn-outline-secondary">Test Connection</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="dashboard-card p-4 shadow-sm h-100">
+                        <h5>Quick Actions</h5>
+                        <div class="d-grid gap-3 mt-3">
+                            <a href="#zoho" class="btn btn-outline-primary">Update Zoho Connection</a>
+                            <a href="#plans" class="btn btn-outline-primary">View Plans</a>
+                            <a href="#support" class="btn btn-outline-primary">Watch Tutorials</a>
+                            <a href="#support" class="btn btn-outline-primary">Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plans" class="mb-5">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="dashboard-card p-4 shadow-sm">
+                        <h4>Subscription Plans</h4>
+                        <p class="text-muted">Current plan and upgrade options for the portal.</p>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 border rounded">
+                                    <h5>Free Plan</h5>
+                                    <p class="text-muted mb-2">Limited usage and community support.</p>
+                                    <p class="mb-0"><strong>Price:</strong> $0 / month</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 border rounded border-primary">
+                                    <h5>Pro Plan</h5>
+                                    <p class="text-muted mb-2">Unlimited usage with premium support and scheduled refresh.</p>
+                                    <p class="mb-0"><strong>Price:</strong> $49 / month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-card p-4 shadow-sm">
+                        <h5>Subscription Rules</h5>
+                        <ul class="list-unstyled text-muted mb-0">
+                            <li>• Free Plan: limited usage</li>
+                            <li>• Pro Plan: full access</li>
+                            <li>• Expired Plan: connector access blocked</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="mb-5">
+            <div class="dashboard-card p-4 shadow-sm bg-light">
+                <h4>Support & Resources</h4>
+                <p class="text-muted">Need help? Use these resources to resolve issues, review policies, and contact our support team.</p>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="p-3 bg-white border rounded h-100">
+                            <h6>Documentation</h6>
+                            <p class="small text-muted mb-3">Privacy policy, terms, setup guides, and user help articles.</p>
+                            <a href="docs.html" class="btn btn-sm btn-primary">Open Docs</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-white border rounded h-100">
+                            <h6>Tutorials</h6>
+                            <p class="small text-muted mb-3">Get step-by-step guidance for Zoho setup and Power BI refresh.</p>
+                            <a href="support.html" class="btn btn-sm btn-outline-primary">View Tutorials</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-white border rounded h-100">
+                            <h6>Contact Support</h6>
+                            <p class="small text-muted mb-3">File a ticket or send a message directly from the support portal.</p>
+                            <a href="support.html" class="btn btn-sm btn-outline-secondary">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
